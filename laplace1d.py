@@ -6,7 +6,7 @@ from cg import cg_pd
 from cg import cg_deflated
 
 
-n = 100
+n = 1000
 dx = 1.0 / (n - 1)
 
 A = np.zeros((n, n))
@@ -28,18 +28,18 @@ plt.title("Solution to the 1D Laplacian")
 x = np.linalg.solve(A, b)
 plt.plot(c, x, 'C1', label='linalg')
 
-#print "cg_simple"
-#cg_simple(A, b, x)
-#plt.plot(c, x, 'C2', label='cg_simple')
+print "cg_simple"
+cg_simple(A, b, x)
+plt.plot(c, x, 'C2', label='cg_simple')
 
-#print "cg_pd"
-#cg_pd(A, b, x)
-#plt.plot(c, x, 'C3', label='cg_pd')
+print "cg_pd"
+cg_pd(A, b, x)
+plt.plot(c, x, 'C3', label='cg_pd')
 
 print "cg_deflated"
-cg_deflated(A, b, x, 4)
-#plt.plot(c, x, 'C3', label='cg_deflated')
+cg_deflated(A, b, x, 5)
+plt.plot(c, x, 'C4', label='cg_deflated')
 
-#legend = plt.legend(loc='upper left', shadow=True, fontsize='x-large')
-#
-#plt.show()
+legend = plt.legend(loc='upper left', shadow=True, fontsize=12)
+
+plt.show()
