@@ -3,9 +3,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from cg import cg_simple
 from cg import cg_pd
+from cg import cg_deflated
 
 
-n = 100
+n = 1000
 dx = 1.0 / (n - 1)
 
 A = np.zeros((n, n))
@@ -35,6 +36,10 @@ print "cg_pd"
 cg_pd(A, b, x)
 plt.plot(c, x, 'C3', label='cg_pd')
 
-legend = plt.legend(loc='upper left', shadow=True, fontsize='x-large')
+print "cg_deflated"
+cg_deflated(A, b, x, 5)
+plt.plot(c, x, 'C4', label='cg_deflated')
+
+legend = plt.legend(loc='upper left', shadow=True, fontsize=12)
 
 plt.show()
