@@ -129,9 +129,13 @@ def cg_deflated(A, b, x, ngroups=2):
     print "n = ", n, "\telements per group = ", (n / ngroups)
 
     # Construct coarse matrix
-    for i in range(1, n - 1):
-        for j in range(1, n - 1):
-            A_coarse[lgroup[i], lgroup[j]] += A[i, j]
+    for i in range(0, n):
+        ig = lgroup[i]
+        if (ig >= 0):
+            for j in range(0, n):
+                jg = lgroup[j]
+                if (jg >= 0):
+                    A_coarse[ig, jg] += A[i, j]
 
     x.fill(0)
 
